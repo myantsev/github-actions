@@ -13,6 +13,7 @@ module.exports = {
 		filename: production
 			? 'static/scripts/[name].[contenthash].js'
 			: 'static/scripts/[name].js', // имя нашего бандла
+		publicPath: process.env.PUBLIC_PATH ? process.env.PUBLIC_PATH : '/',
 		publicPath: '/',
 		chunkFilename: 'static/scripts/[name].[contenthash].bundle.js'
 	},
@@ -89,6 +90,7 @@ module.exports = {
 				: 'static/styles/[name].css',
 		}),
 		new webpack.EnvironmentPlugin({
+			PUBLIC_PATH: null,
 			NODE_ENV: 'development', // значение по умолчанию 'development' если переменная process.env.NODE_ENV не передана
 		}),
 	],
